@@ -2,6 +2,11 @@ var fs = require('fs')
 
 var dirName = process.argv[2]
 
+if (fs.existsSync("./" + dirName)) {
+    console.log('目录已存在');
+	process.exit(1);
+}
+
 fs.mkdirSync("./" + dirName)
 process.chdir("./" +dirName)
 fs.mkdirSync('css')
