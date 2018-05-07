@@ -7,12 +7,12 @@ a{
 	color: inherit;
  	text-decoration: none;
 }
-ul{
+ul,ol{
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
-p,dl,dd,h1{
+p,dl,dd,h1,h2,h3{
 	margin: 0;
 }
 .clearfix::after{
@@ -62,12 +62,12 @@ p,dl,dd,h1{
 }
 /*banner*/
 .banner{
-	background: url(./images/rs-cover-2-2-1-1.jpg) center;
+	background: url(./images/snow-mountain.png) center;
 	background-size: cover;
 	height: 515px;
 }
 .banner .mask{
-	background-color: rgba(0,0,0,0.8);
+	background-color: rgba(0,0,0,0.4);
 	height: inherit;
 }
 /*main*/
@@ -145,4 +145,103 @@ main .media svg{
 	height: 25px;
 	fill: white;
 	vertical-align: top;
+}
+main .downloadPage{
+	text-align: center;
+}
+main .downloadPage .button{
+	display: inline-block;
+	padding: 21px 55px;
+	margin: 32px 0;
+	border: 1px solid #cdcfd1;
+	background-color: #efefef;
+	font-size: 20px;
+	font-weight: bold;
+}
+main .selfIntro{
+	max-width: 940px;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 1.2em;
+	line-height: 2;
+}
+/*section-proSkill*/
+section.proSkill{
+	max-width: 940px;
+	margin: 0 auto;
+}
+section.proSkill h2{
+	margin-top: 50px;
+	text-align: center;
+}
+section.proSkill h3{
+	font-size: 14px;
+	font-weight: normal;
+}
+section.proSkill ol{
+	padding: 50px;
+}
+section.proSkill li{
+	float: left;
+	width: 50%;
+	margin: 20px 0;
+}
+section.proSkill li .progressBar{
+	background-color: #FAE1E1;
+	border-radius: 3px;
+}
+section.proSkill li .progressBar .progress{
+	width: 10%;
+	border: 3px solid #E8676B;
+	border-radius: 3px;
+}
+/**/
+section.showreel{
+	max-width: 940px;
+	margin: 0 auto;
+	text-align: center;
+}
+section.showreel h2{
+	text-align: center;
+	margin-top: 50px;
+}
+section.showreel nav{
+	text-align: center;
+	width: 40%;
+    margin: 0 auto;
+}
+section.showreel nav li{
+	float: left;
+	margin: 10px 20px;
+}
+section.showreel nav ol{
+	display: inline-block;
+}
+section.showreel nav .progressBar{
+	background-color: #FAE1E1;
+	border-radius: 3px;
+}
+section.showreel nav .progressBar .progress{
+	width: 10%;
+	border: 3px solid #E8676B;
+	border-radius: 3px;
+}
+section.showreel .content{
+	position: relative;
+	margin-top: 50px;
+}
+section.showreel .content > div{
+	float: left;
+}
+section.showreel .content > div > a{
+	display: block;
+}
+section.showreel .content .rightTop{
+	position: absolute;
+	right: 0;
+}
+section.showreel .content .rightDown{
+	position: absolute;
+	right: 0;
+	bottom: 0;
 }
