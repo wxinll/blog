@@ -3,6 +3,15 @@
 <head>
 	<title>CV</title>
 	<link rel="stylesheet" type="text/css" href="a.css">
+	<style type="text/css">
+	    .icon {
+	       width: 1em; height: 1em;
+	       vertical-align: -0.15em;
+	       fill: currentColor;
+	       overflow: hidden;
+	    }
+	</style>
+	<script src="http://at.alicdn.com/t/font_656581_5l0ivnt4ow3o9a4i.js"></script>
 </head>
 <body>
 	<div class="topNavBar">
@@ -36,10 +45,10 @@
 					<img src="./images/myphoto.jpg" alt="selfPhoto">
 				</div>
 				<div class="intro">
-					<span>Hello</span>
+					<span class="hello">Hello<span class="triangle"></span></span>
 					<h1>wx</h1>
 					<p>前端之路</p>
-					<dl>
+					<dl class="clearfix">
 						<dt>年龄</dt>
 						<dd>20</dd>
 						<dt>城市</dt>
@@ -53,12 +62,20 @@
 			</div>
 	
 			<footer class="media">
-				<a href="#"><img src="" alt="app"></a>
-				<a href="#"><img src="" alt="app"></a>
-				<a href="#"><img src="" alt="app"></a>
-				<a href="#"><img src="" alt="app"></a>
-				<a href="#"><img src="" alt="app"></a>
-				<a href="#"><img src="" alt="app"></a>
+				<a href="#">
+					<svg class="icon" aria-hidden="true">
+						<use xlink:href="#icon-weibo"></use>
+					</svg>
+				</a>
+				<a href="#">
+					<svg class="icon" aria-hidden="true">
+						<use xlink:href="#icon-twitter"></use>
+					</svg>
+				</a>
+				<a href="#">
+					<svg class="icon" aria-hidden="true">
+						<use xlink:href="#icon-github"></use>
+					</svg>					
 			</footer>
 		</div>
 		<p>

@@ -1,6 +1,6 @@
 body{
-  background: black;
-  color: white;
+  background: #EFEFEF;
+  color: black;
   margin: 0;
 }
 a{
@@ -11,6 +11,9 @@ ul{
 	margin: 0;
 	padding: 0;
 	list-style: none;
+}
+p,dl,dd,h1{
+	margin: 0;
 }
 .clearfix::after{
   content: '';
@@ -69,7 +72,6 @@ ul{
 }
 /*main*/
 main .card{
-	border: 1px solid red;
 	background-color: #FFFFFF;
 	color: black;
 	margin: 0 auto;
@@ -85,8 +87,62 @@ main .intro{
 	float: left;
 	margin-left: 65px;
 }
-footer .media{
+main .intro .hello{
+	position: relative;
+	display: inline-block;
 	background-color: #E8676B;
-	border: 1px solid red;
-	height: 50px;
+	line-height: 30px;
+	padding: 0 10px;
+}
+main .intro .hello .triangle {
+	position: absolute;
+	top: 100%;
+	left: 6px;
+	width: 0;
+	height: 0;
+	border-top: 8px solid red;
+	border-right: 8px solid transparent;
+}
+main .intro h1{
+	margin-top: 25px;
+}
+main .intro p{
+	margin: 10px 0;
+}
+main .intro dl{
+	border-top: 1px solid #dedede;
+	padding: 30px 0;
+}
+main .intro dl dt{
+	float: left;
+	width: 30%;
+	font-weight: bold;
+}
+main .intro dl dd{
+	float: left;
+	width: 70%;
+}
+main .intro dl dt,main .intro dl dd{
+	padding: 5px 0;
+}
+main .card .media{
+	background-color: #E8676B;
+	text-align: center;
+}
+main .media a{
+	display: inline-block;
+	width: 45px;
+	line-height: 25px;
+	margin: 16px;
+	padding: 10px 0;
+	border-radius: 50%;
+}
+main .media a:hover{
+	background-color: #D05C60;
+}
+main .media svg{
+	width: 25px;
+	height: 25px;
+	fill: white;
+	vertical-align: top;
 }
