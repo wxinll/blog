@@ -69,5 +69,24 @@ ul{
 }
 /*main*/
 main .card{
-	borer: 1px solid red;
+	border: 1px solid red;
+	background-color: #FFFFFF;
+	color: black;
+	margin: 0 auto;
+	max-width: 940px;
+}
+main .card .picAndIntro{
+	padding: 50px;
+}
+main .card .picture{
+	float: left;
+}
+main .intro{
+	float: left;
+	margin-left: 65px;
+}
+footer .media{
+	background-color: #E8676B;
+	border: 1px solid red;
+	height: 50px;
 }
