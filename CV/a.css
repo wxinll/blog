@@ -1,0 +1,73 @@
+body{
+  background: black;
+  color: white;
+  margin: 0;
+}
+a{
+	color: inherit;
+ 	text-decoration: none;
+}
+ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.clearfix::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+/*0000000000000000*/
+.topNavBar{
+	position: fixed;
+	width: 100%;
+}
+.topNavBarInner{
+	padding: 20px 16px;
+	line-height: 38px;
+}
+.topNavBar nav{
+	float: right;
+}
+.topNavBar .logo{
+	font-size: 24px;
+	font-family: 'Arial Black';
+}
+.topNavBar .logo .rs{
+	color: #e8676b;
+	margin-right: 4px;
+}
+.topNavBar .logo .card{
+	color: #9a9da2;	
+}
+.topNavBar nav ul{
+	list-style: none;
+}
+.topNavBar nav li{
+	float: left;
+	margin: 0 17px;
+}
+.topNavBar nav li > a{
+	font-size: 12px;
+	font-weight: bold;
+	color: #c1c4c7;
+	padding-bottom: 5px;
+	border-bottom: 3px solid transparent;
+}
+.topNavBar nav li > a:hover{
+	border-bottom-color: #e8676b;
+}
+/*banner*/
+.banner{
+	background: url(./images/rs-cover-2-2-1-1.jpg) center;
+	background-size: cover;
+	height: 515px;
+}
+.banner .mask{
+	background-color: rgba(0,0,0,0.8);
+	height: inherit;
+}
+/*main*/
+main .card{
+	borer: 1px solid red;
+}
