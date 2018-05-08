@@ -70,7 +70,7 @@ p,dl,dd,h1,h2,h3{
 	background-color: rgba(0,0,0,0.4);
 	height: inherit;
 }
-/*main*/
+/*main-----*/
 main .card{
 	box-shadow: 0px 4px 4px 0px rgba(0,0,0,0.15);
 	background-color: #FFFFFF;
