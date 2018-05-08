@@ -135,18 +135,25 @@
 	</section>
 	<section class="showreel">
 		<h2>作品集</h2>
+		<script type="text/javascript">
+			function probarStatus1(){
+				progress.className = "progressState1";
+			}
+			function probarStatus2(){
+				progress.className = "progressState2";
+			}
+			function probarStatus3(){
+				progress.className = "progressState3";
+			}
+		</script>
 		<nav>
 			<ol class="clearfix">
-				<li>
-					<a href="#">
-						略略略
-					</a>
-				</li>
-				<li><a href="#">略略略</a></li>
-				<li><a href="#">略略略</a></li>
+				<li onclick="probarStatus1()">略略</li>
+				<li onclick="probarStatus2()">略略略</li>
+				<li onclick="probarStatus3()">略略略略</li>
 			</ol>
 			<div class="progressBar">
-				<div class="progress"></div>
+				<div id="progress" class="progressState1"></div>
 			</div>
 		</nav>
 		<div class="content clearfix">

@@ -62,7 +62,7 @@ p,dl,dd,h1,h2,h3{
 }
 /*banner*/
 .banner{
-	background: url(./images/snow-mountain.png) center;
+	background: url(./images/snow-mountain.jpg) center;
 	background-size: cover;
 	height: 515px;
 }
@@ -206,8 +206,8 @@ section.showreel h2{
 	margin-top: 50px;
 }
 section.showreel nav{
+	display: inline-block;
 	text-align: center;
-	width: 40%;
     margin: 0 auto;
 }
 section.showreel nav li{
@@ -220,11 +220,24 @@ section.showreel nav ol{
 section.showreel nav .progressBar{
 	background-color: #FAE1E1;
 	border-radius: 3px;
+	margin: 10px 20px;
 }
-section.showreel nav .progressBar .progress{
-	width: 10%;
+section.showreel nav .progressBar .progressState1{
+	width: 17%;
 	border: 3px solid #E8676B;
 	border-radius: 3px;
+}
+section.showreel nav .progressBar .progressState2{
+	border: 3px solid #E8676B;
+	border-radius: 3px;
+	width: 30%;
+	margin-left: 30%;
+}
+section.showreel nav .progressBar .progressState3{
+	border: 3px solid #E8676B;
+	border-radius: 3px;
+	width: 40%;
+	margin-left: 60%;
 }
 section.showreel .content{
 	position: relative;
