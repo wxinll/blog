@@ -8,35 +8,54 @@
 </head>
 <body>
 	<main>
-		<div id="main"></div>
+		<div id="main" class="keyboard"></div>
 	</main>
+	<footer>
+	</footer>
 	<script>
-		var key = {
+		var arrKey = {
 			0 : ['q','w','e','r','t','y','u','i','o','p'],
 			1 : ['a','s','d','f','g','h','j','k','l'],
 			2 : ['z','x','c','v','b','n','m'],
 			length : 3
 		}
 		var hash = {
-			q: 'http://qq.com',
-			w: 'http://weibo.com'
+			q: 'qq.com',
+			w: 'weibo.com'
 		}
-	for (var i = 0; i < key.length; i++){
+		var hashLocalStorage = JSON.parse(localStorage.getItem('siteLocal') || 'null');
+		if(hashLocalStorage){
+			hash = hashLocalStorage;
+		}
+	for (var i = 0; i < arrKey.length; i++){
 			var main = document.getElementById("main");
 			var div = document.createElement("div");
 			main.appendChild(div);
-			for(var j = 0; j < key[i].length; j++){
+			for(var j = 0; j < arrKey[i].length; j++){
 				var kbd = document.createElement('kbd');
+				var button = document.createElement('button');
+				var key = arrKey[i][j];
 				div.appendChild(kbd);
-				kbd.innerHTML = (key[i][j]);				
+				kbd.innerHTML = (key);
+				kbd.appendChild(button);
+				button.className = key;
+				button.innerHTML = '编辑';
+				button.onclick = function(bb){
+					var newSite = prompt('input the site');
+					var key = bb.target.className;
+					hash[key] = newSite;
+					localStorage.setItem('siteLocal',JSON.stringify(hash));
+				}			
 			}
 		}
 	document.onkeydown = function(yy){
 		if (hash[yy.key] != undefined){
-			window.open(hash[yy.key]);
+			window.open('http://'+hash[yy.key],'_blank');
 		}
 	}
+	
 	/*hash edit-local stage*/
+
 	</script>
 </body>
 </html>
