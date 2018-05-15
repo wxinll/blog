@@ -11,22 +11,32 @@
 		<div id="main"></div>
 	</main>
 	<script>
-		a = {
+		var key = {
 			0 : ['q','w','e','r','t','y','u','i','o','p'],
 			1 : ['a','s','d','f','g','h','j','k','l'],
 			2 : ['z','x','c','v','b','n','m'],
 			length : 3
 		}
-	for (var i = 0; i < a.length; i++){
+		var hash = {
+			q: 'http://qq.com',
+			w: 'http://weibo.com'
+		}
+	for (var i = 0; i < key.length; i++){
 			var main = document.getElementById("main");
 			var div = document.createElement("div");
 			main.appendChild(div);
-			for(var j = 0; j < a[i].length; j++){
+			for(var j = 0; j < key[i].length; j++){
 				var kbd = document.createElement('kbd');
 				div.appendChild(kbd);
-				kbd.innerHTML = (a[i][j]);				
+				kbd.innerHTML = (key[i][j]);				
 			}
 		}
+	document.onkeydown = function(yy){
+		if (hash[yy.key] != undefined){
+			window.open(hash[yy.key]);
+		}
+	}
+	/*hash edit-local stage*/
 	</script>
 </body>
 </html>
