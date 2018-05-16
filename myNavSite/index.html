@@ -35,9 +35,11 @@
 			for(var j = 0; j < arrKey[i].length; j++){
 				var kbd = document.createElement('kbd');
 				var button = document.createElement('button');
+				var span = document.createElement('span');
 				var key = arrKey[i][j];
 				div.appendChild(kbd);
-				kbd.innerHTML = (key);
+				kbd.appendChild(span);
+				span.innerHTML = (key);
 				kbd.appendChild(button);
 				button.className = key;
 				button.innerHTML = '编辑';

@@ -15,27 +15,47 @@ p,dl,dd,h1,h2,h3{
 	margin: 0;
 }
 /*0000000000000000000000000000000000000000*/
-kbd{
-	border: 1px solid red;
-	width: 50px;
-	height: 50px;
-	display: inline-block;
-	font-size: 20px;
+body{
+	background: url("./skyNight.jpg") no-repeat center/cover;
 }
 main{
 	text-align: center;
+	height: 97vh;
 }
-main div kbd{
-	margin:10px 10px;
+.keyboard{
+	width: 750px;
+	border-radius: 0.4em;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	background: rgba(255,255,255,0.2)
 }
 .keyboard kbd{
+	display: inline-block;
 	position: relative;
+	margin:8px 7px;
+	text-transform: uppercase;
+	width: 60px;
+	height: 50px;
+	font-size: 20px;
+	color: white;
+	background: black;
 } 
+.keyboard kbd span{
+	position: absolute;
+    left: 5px;
+    top: 2px;
+}
 .keyboard kbd button {
 	font-size: 8px;
 	position: absolute;
-	right: 5px;
+	right: 0;
 	bottom: 0;
+	visibility: hidden;
+}
+.keyboard kbd:hover button{
+	visibility: visible;
 }
 #main div:nth-child(2) {
 	margin-left: -20px;
