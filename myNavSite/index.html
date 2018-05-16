@@ -31,6 +31,7 @@
 			var main = document.getElementById("main");
 			var div = document.createElement("div");
 			main.appendChild(div);
+			// 
 			for(var j = 0; j < arrKey[i].length; j++){
 				var kbd = document.createElement('kbd');
 				var button = document.createElement('button');
@@ -42,9 +43,11 @@
 				button.innerHTML = '编辑';
 				button.onclick = function(bb){
 					var newSite = prompt('input the site');
+					if (newSite != null){
 					var key = bb.target.className;
 					hash[key] = newSite;
-					localStorage.setItem('siteLocal',JSON.stringify(hash));
+					localStorage.setItem('siteLocal',JSON.stringify(hash));	
+					}			
 				}			
 			}
 		}
