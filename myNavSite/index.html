@@ -27,27 +27,42 @@
 		if(hashLocalStorage){
 			hash = hashLocalStorage;
 		}
+		// row of keyboard 1->2->3 
 	for (var i = 0; i < arrKey.length; i++){
 			var main = document.getElementById("main");
 			var div = document.createElement("div");
 			main.appendChild(div);
-			// 
+			// single key of the row 
 			for(var j = 0; j < arrKey[i].length; j++){
 				var kbd = document.createElement('kbd');
 				var button = document.createElement('button');
 				var span = document.createElement('span');
+				var img = document.createElement('img');
 				var key = arrKey[i][j];
+
 				div.appendChild(kbd);
 				kbd.appendChild(span);
-				span.innerHTML = (key);
+				kbd.appendChild(img);
 				kbd.appendChild(button);
+				span.innerHTML = (key);
+
+				if(hash[key]) {
+				img.src = 'http://'+hash[key]+"/favicon.ico";
+				}
+				else{
+					img.src = "https://i.loli.net/2017/11/10/5a05afbc5e183.png"
+				}
+
 				button.className = key;
 				button.innerHTML = '编辑';
 				button.onclick = function(bb){
 					var newSite = prompt('input the site');
-					if (newSite != null){
+					if (newSite){
 					var key = bb.target.className;
 					hash[key] = newSite;
+					var img = bb.target.previousSibling;	
+					img.src = 'http://'+hash[key]+"/favicon.ico";
+					console.log(bb);
 					localStorage.setItem('siteLocal',JSON.stringify(hash));	
 					}			
 				}			
