@@ -56,7 +56,7 @@ main{
     bottom: 4px;
     width: 15px;
 }
-.keyboard kbd button {
+.keyboard kbd button{
 	font-size: 8px;
 	position: absolute;
 	right: 0;

@@ -4,7 +4,6 @@
 	<title>nav site</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="./base.css">
-
 </head>
 <body>
 	<main>
@@ -13,80 +12,113 @@
 	<footer>
 	</footer>
 	<script>
-		var arrKey = {
-			0 : ['q','w','e','r','t','y','u','i','o','p'],
-			1 : ['a','s','d','f','g','h','j','k','l'],
-			2 : ['z','x','c','v','b','n','m'],
-			length : 3
-		}
-		var hash = {
-			q: 'qq.com',
-			w: 'weibo.com',
-			z: 'zhihu.com',
-			t: 'taobao.com',
-			v: 'v2ex.com',
-			y: 'youtube.com'
-		}
-		var hashLocalStorage = JSON.parse(localStorage.getItem('siteLocal') || 'null');
-		if(hashLocalStorage){
-			hash = hashLocalStorage;
-		}
-		// row of keyboard 1->2->3 
-	for (var i = 0; i < arrKey.length; i++){
-			var main = document.getElementById("main");
-			var div = document.createElement("div");
-			main.appendChild(div);
-			// single key element of the row 
-			for(var j = 0; j < arrKey[i].length; j++){
-				var kbd = document.createElement('kbd');
-				var button = document.createElement('button');
-				var span = document.createElement('span');
-				var img = document.createElement('img');
-				var key = arrKey[i][j];
-				// element create
-				div.appendChild(kbd);
-				kbd.appendChild(span);
-				kbd.appendChild(img);
-				kbd.appendChild(button);
-				span.innerHTML = (key);
-
-				button.className = key;
-				button.innerHTML = '编辑';
-				// Event with button click
-				button.onclick = function(bb){
-					var newSite = prompt('input the site');
-					if (newSite){
-					var key = bb.target.className;
-					// hash edit
-					hash[key] = newSite;
-					// img favicon
-					var img = bb.target.previousSibling;	
-					img.src = 'http://'+hash[key]+"/favicon.ico";
-					// hash edit-local stage
-					localStorage.setItem('siteLocal',JSON.stringify(hash));	
-					}			
-				}
-				// favicon in key when window load
-				if(hash[key]) {
-				img.src = 'http://'+hash[key]+"/favicon.ico";
-				}
-				else{
-					img.src = "https://i.loli.net/2017/11/10/5a05afbc5e183.png"
-				}
-				// icon loading failed
-				img.onerror = function(bb) {
-					bb.target.src = "https://i.loli.net/2017/11/10/5a05afbc5e183.png"
-				}
-
+		function init() {
+			var arrKey = {
+				0 : ['q','w','e','r','t','y','u','i','o','p'],
+				1 : ['a','s','d','f','g','h','j','k','l'],
+				2 : ['z','x','c','v','b','n','m'],
+				length : 3
+			}
+			var hash = {
+				q: 'qq.com',
+				w: 'weibo.com',
+				z: 'zhihu.com',
+				t: 'taobao.com',
+				v: 'v2ex.com',
+				y: 'youtube.com'
+			}
+			var hashLocalStorage = JSON.parse(localStorage.getItem('siteLocal') || 'null');
+			if(hashLocalStorage){
+				hash = hashLocalStorage;
+			}
+			return {
+				arrKey: arrKey,
+				hash: hash
 			}
 		}
-	// Event keyDown
-	document.onkeydown = function(yy){
-		if (hash[yy.key]){
-			window.open('http://'+hash[yy.key],'_blank');
+
+		function createImage(domain) {
+			//  load favicon 
+			if(domain) {
+			img.src = 'http://'+domain+"/favicon.ico";
+			}
+			else{
+				img.src = "https://i.loli.net/2017/11/10/5a05afbc5e183.png"
+			}
+			// icon loading failed
+			img.onerror = function(bb) {
+				bb.target.src = "https://i.loli.net/2017/11/10/5a05afbc5e183.png"
+			}
 		}
-	}
-	
+
+		function listenToUser(hash) {
+			document.onkeydown = function(yy){
+				if (hash[yy.key]){
+					window.open('http://'+hash[yy.key],'_blank');
+				}
+			}		
+		}
+
+		function buttonAttri(key) {
+					button.id = key;
+					button.innerHTML = '编辑';	
+					// Event with button click
+					button.onclick = function(bb){
+						var newSite = prompt('input the site');
+						if (newSite){
+						var key = bb.target.id;
+						// hash edit
+						hash[key] = newSite;
+						// img favicon
+						var img = bb.target.previousSibling;	
+						img.src = 'http://'+hash[key]+"/favicon.ico";
+						// store hash edit with localStorage
+						localStorage.setItem('siteLocal',JSON.stringify(hash));	
+						}			
+					}				
+		}
+
+	//	1, init
+		initData = init();
+		arrKey = initData.arrKey;
+		hash = initData.hash;
+
+	/*	2, create content
+		row of keyboard 1->2->3 */
+		for (var i = 0; i < arrKey.length; i++){
+				var main = document.getElementById("main");
+				var div = document.createElement("div");
+				main.appendChild(div);
+
+				// single key element of the row -> qwer....
+				for(var j = 0; j < arrKey[i].length; j++){
+					var kbd = document.createElement('kbd');
+					var span = document.createElement('span');
+					var img = document.createElement('img');
+					var key = arrKey[i][j];
+
+					// element create
+					div.appendChild(kbd);
+					kbd.appendChild(span);
+					kbd.appendChild(img);
+					
+					// attributes or content setting
+					span.innerHTML = (key);
+
+					//createButton
+					var button = document.createElement('button');
+					kbd.appendChild(button);
+					//Button behavior
+					buttonAttri(key);
+
+					//  load favicon 
+					domain = hash[key];
+					createImage(domain);
+				}
+			}
+
+	//	3, keyboard receive
+		listenToUser(hash);
 
 	</script>
 </body>
