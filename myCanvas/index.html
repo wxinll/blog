@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>myCanvas</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="./base.css">
+</head>
+<body>
+	<canvas id="canvas" width="300" height="300">
+	</canvas>
+	<button id="erase">橡皮擦</button>
+	<button id="rePaint">重绘</button>
+	<script>
+		var canvas = document.getElementById('canvas')
+		var context = canvas.getContext('2d')
+		var erase = document.getElementById('erase')
+
+		var eraseEnabled = false
+		var beginPaint
+		var eraseSize = 40
+
+		erase.onclick = function(){
+			eraseEnabled = !eraseEnabled
+		}
+
+		rePaint.onclick = function(){
+			context.clearRect(0,0,canvas.width,canvas.height)
+			eraseEnabled = false;
+		}		
+		
+
+		canvas.width = document.documentElement.clientWidth
+		canvas.height = document.documentElement.clientHeight
+
+		
+		canvas.onmousedown = function(xx){
+			beginPaint = true
+			x = xx.clientX
+			y = xx.clientY
+			if(eraseEnabled){
+				context.clearRect(x - eraseSize/2,y - eraseSize/2,eraseSize,eraseSize)
+			}
+			else{
+				context.beginPath()
+				context.moveTo(x,y)
+			}
+		}
+		canvas.onmousemove = function(xx){
+			console.log(2)
+			if(beginPaint){
+				x = xx.clientX
+				y = xx.clientY
+				if(eraseEnabled){
+					context.clearRect(x - eraseSize/2,y - eraseSize/2,eraseSize,eraseSize)
+				}
+				else{
+					context.lineTo(x,y)
+					context.stroke()
+				}
+			}
+		}
+		canvas.onmouseup = function(xx){
+			beginPaint = false
+		}
+
+
+
+
+	</script>
+</body>
+</html>
