@@ -4,17 +4,19 @@ var context = canvas.getContext('2d')
 canvas.width = document.documentElement.clientWidth
 canvas.height = document.documentElement.clientHeight
 
-var beginPaint
 
 var toolIcon = document.getElementsByClassName('tool')[0].getElementsByTagName('svg')
-
 var pen = toolIcon[0]
 var erase = toolIcon[1]
 var del = toolIcon[2]
 var download = toolIcon[3]
 
+// init
 var eraseEnabled = false
+context.lineWidth = 5
+var penSize = context.lineWidth
 
+// tool choose
 pen.onclick = function(){
 	eraseEnabled = false
 	pen.classList.add('active')
@@ -29,7 +31,17 @@ del.onclick = function() {
 	context.clearRect(0, 0, canvas.width, canvas.height)
 	eraseEnabled = false
 }
+download.onclick = function(){
+  var url = canvas.toDataURL("image/png")
+  var a = document.createElement('a')
+  document.body.appendChild(a)
+  a.href = url
+  a.download = '画画了'
+  a.target = '_blank'
+  a.click()
+}
 
+// color choose
 red.onclick = function() {
 	context.strokeStyle = 'red'
 	red.classList.add('active')
@@ -49,10 +61,21 @@ blue.onclick = function() {
 	red.classList.remove('active')
 }
 
+// lineWidth choose
+size1.onclick = function(){
+	context.lineWidth = 5
+}
+size2.onclick = function(){
+	context.lineWidth = 10
+}
+size3.onclick = function(){
+	context.lineWidth = 15
+}
 
-context.lineWidth = 20
+sizeBar.onclick = function(){
+	penSize = context.lineWidth
+}
 
-var penSize = context.lineWidth
 
 function handStart(x,y){
 	if (eraseEnabled) {
@@ -80,7 +103,9 @@ function eraseMove(){
 }
 
 var touch = document.ontouchstart
+var using
 
+// 判断触屏设备or鼠标设备
 if (touch !== undefined) {
 	// 触屏设备
 	canvas.ontouchstart = function(xx) {

@@ -25,10 +25,11 @@ body{
 	overflow: hidden;
 }
 #canvas{
-	border: 1px solid red; 
+	position: fixed;
+	background-color: 
 }
 .tool{
-    position: absolute;
+    position: fixed;
 	top: 1em;
 	left: 1em;
 }
@@ -43,9 +44,9 @@ body{
 	transition: 0.5s;
 }
 ul.color{
-	position: absolute;
+	position: fixed;
 	top: 1em;
-	left: 6em;
+	left: 4em;
 }
 ul.color li{
 	border-radius: 1.5em;
@@ -65,4 +66,22 @@ ul.color li.blue{
 ul.color li.active{
 	transform: scale(1.3);
 	transition: 0.3s;
+}
+ul.penSize{
+	position: fixed;
+	top: 8em;
+	left: 4em;
+}
+ul.penSize li{
+	width: 2.5rem;
+	margin: 0.5rem 0;
+}
+#size1{
+	border-top: 5px solid black;
+}
+#size2{
+	border-top: 10px solid black;
+}
+#size3{
+	border-top: 15px solid black;
 }
