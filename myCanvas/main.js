@@ -24,8 +24,8 @@ pen.onclick = function(){
 }
 erase.onclick = function() {
 	eraseEnabled = true
-	erase.classList.add('active')
 	pen.classList.remove('active')
+	erase.classList.add('active')
 }
 del.onclick = function() {
 	context.clearRect(0, 0, canvas.width, canvas.height)
@@ -50,26 +50,35 @@ red.onclick = function() {
 }
 green.onclick = function() {
 	context.strokeStyle = 'green'
-	green.classList.add('active')
 	red.classList.remove('active')
+	green.classList.add('active')
 	blue.classList.remove('active')
 }
 blue.onclick = function() {
 	context.strokeStyle = 'blue'
-	blue.classList.add('active')
 	green.classList.remove('active')
 	red.classList.remove('active')
+	blue.classList.add('active')
 }
 
 // lineWidth choose
 size1.onclick = function(){
 	context.lineWidth = 5
+	size1.classList.add('active')
+	size2.classList.remove('active')
+	size3.classList.remove('active')
 }
 size2.onclick = function(){
 	context.lineWidth = 10
+	size1.classList.remove('active')
+	size2.classList.add('active')
+	size3.classList.remove('active')
 }
 size3.onclick = function(){
 	context.lineWidth = 15
+	size1.classList.remove('active')
+	size2.classList.remove('active')
+	size3.classList.add('active')
 }
 
 sizeBar.onclick = function(){

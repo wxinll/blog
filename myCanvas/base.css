@@ -77,11 +77,15 @@ ul.penSize li{
 	margin: 0.5rem 0;
 }
 #size1{
-	border-top: 5px solid black;
+	border-top: 5px solid rgba(0,0,0,0.3);
 }
 #size2{
-	border-top: 10px solid black;
+	border-top: 10px solid rgba(0,0,0,0.3);
 }
 #size3{
-	border-top: 15px solid black;
+	border-top: 15px solid rgba(0,0,0,0.3);
+}
+#sizeBar li.active{
+	border-color: rgba(0,0,0,1);
+	transition: 0.2s;
 }
