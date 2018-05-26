@@ -15,21 +15,40 @@
 </head>
 <body>
 	<div class="topNavBar">
-		<div class="topNavBarInner clearfix">
-		<a class = "logo" href="#" alt="logo">
-			<span class="rs">RS</span><span class="card">card</span>	
-		</a>
-		<nav>
-			<ul class="clearfix">
-				<li><a href="#">关于</a></li>
-				<li><a href="#">技能</a></li>
-				<li><a href="#">作品</a></li>
-				<li><a href="#">博客</a></li>
-				<li><a href="#">日历</a></li>
-				<li><a href="#">联系方式</a></li>
-				<li><a href="#">其他</a></li>
-			</ul>
-		</nav>			
+		<div id="topNavBarInner" class="topNavBarInner clearfix">
+			<a class = "logo" href="#" alt="logo">
+				<span class="rs">RS</span><span class="card">card</span>	
+			</a>
+			<nav>
+				<ul class="clearfix">
+					<li>
+						<a href="#">关于</a>
+					</li>
+					<li>
+						<a href="#proSkill">技能</a>
+					</li>
+					<li>
+						<a href="#showreel">作品</a>
+						<ul>
+							<li>作品1</li>
+							<li>作品2</li>
+							<li>作品3</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">博客</a>
+					</li>
+					<li>
+						<a href="#">日历</a>
+					</li>
+					<li>
+						<a href="#">联系方式</a>
+					</li>
+					<li>
+						<a href="#">其他</a>
+					</li>
+				</ul>
+			</nav>			
 		</div>
 	</div>
 
@@ -88,7 +107,7 @@
 			每天学习一点点
 		</p>
 	</main>
-	<section class="proSkill">
+	<section id="proSkill" class="proSkill">
 		<h2>技能</h2>
 		<ol class="clearfix">
 			<li>
@@ -133,7 +152,7 @@
 			</li>
 		</ol>
 	</section>
-	<section class="showreel">
+	<section id="showreel" class="showreel">
 		<h2>作品集</h2>
 		<script type="text/javascript">
 			function probarStatus1(){
@@ -175,5 +194,15 @@
 		</div>
 		
 	</section>
+	<script>
+		window.onscroll = function(x){
+			if (window.scrollY > 0) {
+				topNavBarInner.classList.add('active')
+			}else{
+				topNavBarInner.classList.remove('active')
+			}
+
+		}
+	</script>
 </body>
 </html>
