@@ -80,8 +80,14 @@ p,dl,dd,h1,h2,h3{
 	0% {width: 0;}
 	100% {width: 100%;}
 }
-.topNavBar nav>ul>li>ul{
+.topNavBar nav>ul>li>ul.submenu {
+	display: none;
+}
+.topNavBar nav>ul>li>ul.active{
+	position: absolute;
+	display: block;
 	border: 1px solid red;
+	white-space: nowrap;
 }
 
 /*banner*/

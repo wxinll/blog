@@ -28,8 +28,8 @@
 						<a href="#proSkill">技能</a>
 					</li>
 					<li>
-						<a href="#showreel">作品</a>
-						<ul>
+						<a class="menuTrigger" href="#showreel">作品</a>
+						<ul class="submenu">
 							<li>作品1</li>
 							<li>作品2</li>
 							<li>作品3</li>
@@ -202,6 +202,12 @@
 				topNavBarInner.classList.remove('active')
 			}
 
+		}
+		var aTags = document.getElementsByClassName('menuTrigger')
+		for(var i = 0; i<aTags.length; i++){
+			aTags[i].onmouseenter = function(x){
+				x.target.nextSibling
+			}
 		}
 	</script>
 </body>
