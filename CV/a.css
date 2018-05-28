@@ -58,19 +58,19 @@ p,dl,dd,h1,h2,h3{
 .topNavBar nav>ul>li{
 	position: relative;
 	float: left;
-	margin: 0 17px;
+	margin: 0 17px;	
 }
 .topNavBar nav li > a{
 	font-size: 12px;
 	font-weight: bold;
 	padding-bottom: 5px;
 }
-.topNavBar nav li > a:hover::after{
+.topNavBar nav li.active > a::after{
     content: '';
     display: block;
     position: absolute;
     top: 90%;
-    left: 0;
+    left: 0;	
     height: 3px;
     background-color: #e8676b;
     width: 100%;
@@ -82,12 +82,31 @@ p,dl,dd,h1,h2,h3{
 }
 .topNavBar nav>ul>li>ul.submenu {
 	display: none;
+	font-size: 12px;
 }
-.topNavBar nav>ul>li>ul.active{
+.topNavBar nav>ul>li.active>ul.submenu{
 	position: absolute;
 	display: block;
-	border: 1px solid red;
 	white-space: nowrap;
+	background-color: #fff;
+	color: #000;
+    right: 0;
+	padding: 6px 10px;
+	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
+	animation: submenuSlide 0.5s;
+	line-height: 28px;
+	cursor: pointer;
+}
+@keyframes submenuSlide{
+	0% {
+		transform: translateX(-30%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+.topNavBar nav>ul>li.active>ul.submenu>li{
+	padding: 0;
 }
 
 /*banner*/
