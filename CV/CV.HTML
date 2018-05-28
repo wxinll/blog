@@ -3,6 +3,7 @@
 <head>
 	<title>CV</title>
 	<link rel="stylesheet" type="text/css" href="a.css">
+	<link rel="stylesheet" type="text/css" href="loading.css">
 	<style type="text/css">
 	    .icon {
 	       width: 1em; height: 1em;
@@ -14,6 +15,10 @@
 	<script src="https://at.alicdn.com/t/font_656581_5l0ivnt4ow3o9a4i.js"></script>
 </head>
 <body>
+	<div class="site-welcome-active">	
+		<div class="loading">	
+		</div>
+	</div>
 	<div class="topNavBar">
 		<div id="topNavBarInner" class="topNavBarInner clearfix">
 			<a class = "logo" href="#" alt="logo">
@@ -195,7 +200,13 @@
 		
 	</section>
 	<script>
-		window.onscroll = function(x) {
+		window.setTimeout(
+			function(){
+				var loading = document.getElementsByClassName('site-welcome-active')
+				loading[0].className = 'site-welcome'
+			},1000
+		)
+		window.onscroll = function(x){
 			if (window.scrollY > 0) {
 				topNavBarInner.classList.add('active')
 			} else {
@@ -224,12 +235,32 @@
 				var href = a.getAttribute('href')
 				var element = document.querySelector(href)
 				var top = element.offsetTop
-				var dx = topNavBarInner.offsetHeight
-				top = top - dx - 10
-				window.scrollTo(0,top)
+				
+				var xCorrect = topNavBarInner.offsetHeight + 10
+				var originY = window.scrollY
+				var distance = top - xCorrect - originY
+
+				var step = 25
+				var totalTime = 300
+				var i = 0
+				var duration = totalTime / step
+				var velocity = distance / step
+
+				console.log(distance)
+
+				var id = setInterval(
+						function(){
+							if(i === step){
+								window.clearInterval(id)
+								return
+							}
+							i = i + 1
+							var y = originY + velocity * i
+							window.scrollTo(0,y)
+						},duration
+					)
 			}
 		}
-		console.log(aTags)
 	</script>
 </body>
 </html>
