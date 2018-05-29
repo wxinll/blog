@@ -199,6 +199,7 @@
 		</div>
 		
 	</section>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
 	<script>
 		window.setTimeout(
 			function(){
@@ -238,7 +239,27 @@
 				
 				var xCorrect = topNavBarInner.offsetHeight + 10
 				var originY = window.scrollY
-				var distance = top - xCorrect - originY
+				var finalY = top - xCorrect
+
+				// tweeen.js 
+				function animate(time) {
+					requestAnimationFrame(animate);
+					TWEEN.update(time);
+				}
+				requestAnimationFrame(animate);
+
+				var coords = {
+					y: originY
+				};
+				var tween = new TWEEN.Tween(coords)
+					.to({
+						y: finalY
+					}, 800)
+					.easing(TWEEN.Easing.Quadratic.InOut)
+					.onUpdate(function() {
+						window.scrollTo(0, coords.y)
+					})
+					.start();
 
 				var step = 25
 				var totalTime = 300
@@ -253,7 +274,7 @@
 							if(i === step){
 								window.clearInterval(id)
 								return
-							}
+							} 
 							i = i + 1
 							var y = originY + velocity * i
 							window.scrollTo(0,y)
