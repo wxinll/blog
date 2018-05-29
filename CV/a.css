@@ -98,9 +98,9 @@ p,dl,dd,h1,h2,h3{
     height: 3px;
     background-color: #e8676b;
     width: 100%;
-    animation: navBar 0.3s;
+    animation: liSlide 0.3s;
 }
-@keyframes navBar{
+@keyframes liSlide{
 	0% {width: 0;}
 	100% {width: 100%;}
 }
@@ -276,12 +276,18 @@ section.proSkill li:nth-child(2n){
 }
 section.proSkill li .progressBar{
 	background-color: #FAE1E1;
+	height: 6px;
 	border-radius: 3px;
 }
 section.proSkill li .progressBar .progress{
 	width: 10%;
 	border: 3px solid #E8676B;
 	border-radius: 3px;
+	transition: all 1s;
+}
+section.proSkill.offSet .progressBar .progress{
+	width: 0%;
+	border: 0px
 }
 /*section.showreel*/
 section.showreel{
@@ -349,4 +355,10 @@ section.showreel .content .rightDown{
 	position: absolute;
 	right: 0;
 	bottom: 0;
+}
+[sec-tag].offSet{
+	transform: translateY(70px);
+}
+[sec-tag]{
+	transition: all 0.5s;
 }

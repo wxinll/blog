@@ -15,10 +15,10 @@
 	<script src="https://at.alicdn.com/t/font_656581_5l0ivnt4ow3o9a4i.js"></script>
 </head>
 <body>
-	<div class="site-welcome-active">	
+<!-- 	<div id="site-welcome" class="site-welcome-active">	
 		<div class="loading">	
 		</div>
-	</div>
+	</div> -->
 	<div class="topNavBar">
 		<div id="topNavBarInner" class="topNavBarInner clearfix">
 			<a class = "logo" href="#" alt="logo">
@@ -63,7 +63,7 @@
 		</div>
 	</div>
 	<main>
-		<div data-x id="introCard" class="card">
+		<div sec-tag id="introCard" class="card">
 			<div class="picAndIntro clearfix">
 				<div class="picture">
 					<img src="./images/myphoto.jpg" alt="selfPhoto">
@@ -112,7 +112,7 @@
 			每天学习一点点
 		</p>
 	</main>
-	<section data-x id="proSkill" class="proSkill">
+	<section sec-tag id="proSkill" class="proSkill">
 		<h2>技能</h2>
 		<ol class="clearfix">
 			<li>
@@ -157,7 +157,7 @@
 			</li>
 		</ol>
 	</section>
-	<section data-x id="showreel" class="showreel">
+	<section sec-tag id="showreel" class="showreel">
 		<h2>作品集</h2>
 		<script type="text/javascript">
 			function probarStatus1(){
@@ -201,81 +201,111 @@
 	</section>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
 	<script>
-	/*loading animation*/
+	/*loading animation*/	
 		window.setTimeout(
 			function(){
-				var loading = document.getElementsByClassName('site-welcome-active')
-				loading[0].className = 'site-welcome'
+				var loading = document.getElementById('site-welcome')
+				loading.className = 'site-welcome'
 			},1000
 		)
-	/*topNav animation*/
-		window.onscroll = function(x){
+
+		var secTags = document.querySelectorAll('[sec-tag]')
+		for (var i = 0; i < secTags.length; i++) {
+			secTags[i].classList.add('offSet')
+		}
+
+		setTimeout(function(){
+			introCard.classList.remove('offSet')
+		},500)
+
+
+		window.onscroll = function() {
+
+			topNavActive()
+
+			topNavHighLight()
+		}
+
+		jumpAnimation()
+
+		liActive()
+
+
+	/*iTags add active*/
+		function liActive() {
+			var liTags = document.querySelectorAll('.topNavBar nav>ul>li')
+			for (var i = 0; i < liTags.length; i++) {
+				liTags[i].onmouseenter = function(x) {
+					x.currentTarget.classList.add('active')
+				}
+			}
+			for (var i = 0; i < liTags.length; i++) {
+				liTags[i].onmouseleave = function(x) {
+					x.currentTarget.classList.remove('active')
+				}
+			}
+		}
+
+
+	/*jump animation*/
+		function jumpAnimation() {
+			var aTags = document.querySelectorAll('.topNavBar nav li > a')
+			for (var i = 0; i < aTags.length; i++) {
+				aTags[i].onclick = function(x) {
+					x.preventDefault()
+					a = x.currentTarget
+					var href = a.getAttribute('href')
+					var element = document.querySelector(href)
+					var top = element.offsetTop
+					
+					var xCorrect = topNavBarInner.offsetHeight + 10
+					var originY = window.scrollY
+					var finalY = top - xCorrect
+
+					// scroll with tweeen
+					function animate(time) {
+						requestAnimationFrame(animate);
+						TWEEN.update(time);
+					}
+					requestAnimationFrame(animate);
+
+					var coords = {
+						y: originY
+					};
+					var tween = new TWEEN.Tween(coords)
+						.to({
+							y: finalY
+						}, 800)
+						.easing(TWEEN.Easing.Quadratic.InOut)
+						.onUpdate(function() {
+							window.scrollTo(0, coords.y)
+						})
+						.start();
+				}
+			}
+		}
+
+		function topNavActive() {
 			if (window.scrollY > 0) {
 				topNavBarInner.classList.add('active')
 			} else {
 				topNavBarInner.classList.remove('active')
 			}
 		}
-		// liTags add active
-		var liTags = document.querySelectorAll('.topNavBar nav>ul>li')
-		for (var i = 0; i < liTags.length; i++) {
-			liTags[i].onmouseenter = function(x) {
-				x.currentTarget.classList.add('active')
-				}
-			}
-		for (var i = 0; i < liTags.length; i++) {
-			liTags[i].onmouseleave = function(x) {
-				x.currentTarget.classList.remove('active')
-				}
-			}
 
-	/*jump animation*/
-		var aTags = document.querySelectorAll('.topNavBar nav li > a')
-		for (var i = 0; i < aTags.length; i++) {
-			aTags[i].onclick = function(x) {
-				x.preventDefault()
-				a = x.currentTarget
-				var href = a.getAttribute('href')
-				var element = document.querySelector(href)
-				var top = element.offsetTop
-				
-				var xCorrect = topNavBarInner.offsetHeight + 10
-				var originY = window.scrollY
-				var finalY = top - xCorrect
-
-				// scroll with tweeen
-				function animate(time) {
-					requestAnimationFrame(animate);
-					TWEEN.update(time);
-				}
-				requestAnimationFrame(animate);
-
-				var coords = {
-					y: originY
-				};
-				var tween = new TWEEN.Tween(coords)
-					.to({
-						y: finalY
-					}, 800)
-					.easing(TWEEN.Easing.Quadratic.InOut)
-					.onUpdate(function() {
-						window.scrollTo(0, coords.y)
-					})
-					.start();
-			}
-		}
-	/*topNav highlight when page scroll*/
-		var secTags = document.querySelectorAll('[data-x]')
-		window.onscroll = function(){
-
+		function topNavHighLight(){
+			var secTags = document.querySelectorAll('[sec-tag]')
 			var minIndex = 0
 			var dx = []
 			for (var i = 0; i < secTags.length; i++) {
 				dx[i] = Math.abs(secTags[i].offsetTop - window.scrollY)
-				if(dx[i] < dx[minIndex]){
+				if (dx[i] < dx[minIndex]) {
 					minIndex = i
 				}
 			}
+
+
+			secTags[minIndex].classList.remove('offSet')
 
 			var id = secTags[minIndex].id
 			var mark = 'a[href="#' + id +'"]'
@@ -286,7 +316,7 @@
 				liTags[i].classList.remove('highLight')
 			}
 
-			aTag.parentNode.classList.add('highLight')
+			aTag.parentNode.classList.add('highLight')			
 		}
 	</script>
 </body>
