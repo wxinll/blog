@@ -63,7 +63,7 @@
 		</div>
 	</div>
 	<main>
-		<div id="introCard" class="card">
+		<div data-x id="introCard" class="card">
 			<div class="picAndIntro clearfix">
 				<div class="picture">
 					<img src="./images/myphoto.jpg" alt="selfPhoto">
@@ -112,7 +112,7 @@
 			每天学习一点点
 		</p>
 	</main>
-	<section id="proSkill" class="proSkill">
+	<section data-x id="proSkill" class="proSkill">
 		<h2>技能</h2>
 		<ol class="clearfix">
 			<li>
@@ -157,7 +157,7 @@
 			</li>
 		</ol>
 	</section>
-	<section id="showreel" class="showreel">
+	<section data-x id="showreel" class="showreel">
 		<h2>作品集</h2>
 		<script type="text/javascript">
 			function probarStatus1(){
@@ -201,21 +201,22 @@
 	</section>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
 	<script>
+	/*loading animation*/
 		window.setTimeout(
 			function(){
 				var loading = document.getElementsByClassName('site-welcome-active')
 				loading[0].className = 'site-welcome'
 			},1000
 		)
+	/*topNav animation*/
 		window.onscroll = function(x){
 			if (window.scrollY > 0) {
 				topNavBarInner.classList.add('active')
 			} else {
 				topNavBarInner.classList.remove('active')
 			}
-
 		}
-
+		// liTags add active
 		var liTags = document.querySelectorAll('.topNavBar nav>ul>li')
 		for (var i = 0; i < liTags.length; i++) {
 			liTags[i].onmouseenter = function(x) {
@@ -228,6 +229,7 @@
 				}
 			}
 
+	/*jump animation*/
 		var aTags = document.querySelectorAll('.topNavBar nav li > a')
 		for (var i = 0; i < aTags.length; i++) {
 			aTags[i].onclick = function(x) {
@@ -241,7 +243,7 @@
 				var originY = window.scrollY
 				var finalY = top - xCorrect
 
-				// tweeen.js 
+				// scroll with tweeen
 				function animate(time) {
 					requestAnimationFrame(animate);
 					TWEEN.update(time);
@@ -260,27 +262,31 @@
 						window.scrollTo(0, coords.y)
 					})
 					.start();
-
-				var step = 25
-				var totalTime = 300
-				var i = 0
-				var duration = totalTime / step
-				var velocity = distance / step
-
-				console.log(distance)
-
-				var id = setInterval(
-						function(){
-							if(i === step){
-								window.clearInterval(id)
-								return
-							} 
-							i = i + 1
-							var y = originY + velocity * i
-							window.scrollTo(0,y)
-						},duration
-					)
 			}
+		}
+	/*topNav highlight when page scroll*/
+		var secTags = document.querySelectorAll('[data-x]')
+		window.onscroll = function(){
+
+			var minIndex = 0
+			var dx = []
+			for (var i = 0; i < secTags.length; i++) {
+				dx[i] = Math.abs(secTags[i].offsetTop - window.scrollY)
+				if(dx[i] < dx[minIndex]){
+					minIndex = i
+				}
+			}
+
+			var id = secTags[minIndex].id
+			var mark = 'a[href="#' + id +'"]'
+			var aTag = document.querySelector(mark)
+
+			var liTags = document.querySelectorAll('.topNavBar nav>ul>li')
+			for (var i = 0; i < liTags.length; i++) {	
+				liTags[i].classList.remove('highLight')
+			}
+
+			aTag.parentNode.classList.add('highLight')
 		}
 	</script>
 </body>

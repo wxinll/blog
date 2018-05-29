@@ -89,6 +89,17 @@ p,dl,dd,h1,h2,h3{
     width: 100%;
     animation: navBar 0.3s;
 }
+.topNavBar nav li.highLight > a::after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 90%;
+    left: 0;	
+    height: 3px;
+    background-color: #e8676b;
+    width: 100%;
+    animation: navBar 0.3s;
+}
 @keyframes navBar{
 	0% {width: 0;}
 	100% {width: 100%;}
