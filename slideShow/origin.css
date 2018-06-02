@@ -1,0 +1,32 @@
+.window{
+	width: 500px;
+	overflow: hidden;
+}
+.images{
+	display: flex;	
+	width: 100%;
+}
+.images>img{
+	transition: all 0.5s;
+}
+.index{
+	text-align: center;
+}
+.active1 img{
+	transform: translateX(0px);
+}
+.active2 img{
+	transform: translateX(-500px);
+}
+.active3 img{
+	transform: translateX(-1000px);
+}
+.window .spanActive1 span:nth-child(1){
+	color: red;
+}
+.window .spanActive2 span:nth-child(2){
+	color: red;
+}
+.window .spanActive3 span:nth-child(3){
+	color: red;
+}
