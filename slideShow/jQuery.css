@@ -1,0 +1,17 @@
+.window{
+	width: 500px;
+	overflow: hidden;
+}
+.images{
+	display: flex;	
+	width: 100%;
+}
+.images img{
+	transition: all 0.5s;
+}
+.index{
+	text-align: center;
+}
+.red{
+	color: red;
+}
