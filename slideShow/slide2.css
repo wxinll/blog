@@ -1,0 +1,32 @@
+.window{
+	width: 500px;
+	overflow: hidden;
+}
+.images{
+	position: relative;
+	width: 100%;
+	height: 400px;	
+	transition: all 0.5s;
+}
+.images img{
+	transition: transform 0.5s;
+}
+.index{
+	text-align: center;
+}
+.red{
+	color: red;
+}
+.images .current{
+	transform: translate(0);
+	z-index: 2;
+}
+.images .head{
+	transform: translate(-100%);
+	z-index: 1
+}
+.images .tail{
+ 	transform: translate(100%);
+ 	z-index: 1;
+}
+
