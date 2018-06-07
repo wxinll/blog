@@ -50,6 +50,14 @@ var size = 3
 //start slide & interaction
 var timer = setTimer() 
 
+document.onvisibilitychange = function(){
+	if(document.hidden){
+		window.clearInterval(timer)
+	}else{
+		timer = setTimer()
+	}
+}
+
 $('.window').on('mouseover', ()=> {
 	window.clearInterval(timer)
 })
