@@ -1,0 +1,56 @@
+.window{
+	position: relative;
+	width: 600px;
+	margin: 0 auto;
+	padding: 10px;
+    border: 1px solid green;
+}
+.window-inner{
+    width: 500px;
+    margin: 10px auto;
+	overflow: hidden;
+}
+.images{
+	display: flex;
+	position: relative;
+	transition: all 0.5s;
+}
+.images img{
+	transition: transform 0.5s;
+}
+.window span.pre,span.next{
+    position: absolute;
+    border: 15px solid transparent;	
+    top: 40%;
+   	cursor: pointer;
+}
+.window span.pre{
+    border-right-color: green;
+    left: 0;
+}
+.window span.next{
+    border-left-color: green;
+    right: 0;
+}
+
+.index{
+	 padding-top: 20px;
+	text-align: center;
+}
+.red{
+	color: red;
+}
+
+.images .current{
+	transform: translate(0);
+	z-index: 2;
+}
+.images .head{
+	transform: translate(-100%);
+	z-index: 1
+}
+.images .tail{
+ 	transform: translate(100%);
+ 	z-index: 1;
+}
+
