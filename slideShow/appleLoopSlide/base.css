@@ -66,6 +66,9 @@ h1{
 .menu ul>li.active{
 	position: relative;
 }
+.menu ul>li.active>img{
+	transform: translate(-50%,-50%) scale(1.2);
+}
 .menu ul>li.active::before{
 	content: "";
 	display: block;
