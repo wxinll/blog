@@ -18,20 +18,6 @@ toPic(n)
 
 var $span = $('.window .index span')
 
-for (let i = 0; i < $span.length; i++) {
-	$span.eq(i).on('click', function() {
-		if (i === 0 && n === size - 2) {
-			$('.window .next').trigger('click')
-		} else if (i === size - 3 && n === 1) {
-			$('.window .pre').trigger('click')
-		} else {
-			//正常情况
-			n = i + 1
-			toPic(n)
-		}
-	})
-}
-
 $('.window .next').on('click',function(){
 	n += 1
 	toPic(n);
@@ -52,6 +38,20 @@ $('.window .pre').on('click',function(){
 	}
 })
 
+for (let i = 0; i < $span.length; i++) {
+	$span.eq(i).on('click', function() {
+		if (i === 0 && n === size - 2) {
+			$('.window .next').trigger('click')
+		} else if (i === size - 3 && n === 1) {
+			$('.window .pre').trigger('click')
+		} else {
+			//正常情况
+			n = i + 1
+			toPic(n)
+		}
+	})
+}
+
 var timer = setTimer()
 
 $('.window').on('mouseover', ()=> {
@@ -62,6 +62,13 @@ $('.window').on('mouseleave', ()=> {
 	timer = setTimer()
 })
 
+document.onvisibilitychange = function(){
+	if(document.hidden){
+		window.clearInterval(timer)
+	}else{
+		timer = setTimer()
+	}
+}
 
 function setTimer() {
 	return setInterval(() => {
