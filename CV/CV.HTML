@@ -15,27 +15,15 @@
 	</style>
 	<script src="https://at.alicdn.com/t/font_656581_5l0ivnt4ow3o9a4i.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
-	<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.7.2/dist/av-min.js"></script>
+	<!-- <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.7.2/dist/av-min.js"></script> -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
 	<style>
 	.swiper-container {
 		width: 800px;
 		height: 533px;
 		z-index: 0;
-	}
-	.swiper-button-next, .swiper-button-prev {
-	position: absolute;
-	top: 0%;
-	width: 25px;
-	height: 100%;
-	/* margin-top: -22px; */
-	z-index: 10;
-	/* cursor: pointer; */
-	/* background-size: 27px 44px; */
-	background-position: center;
-	background-repeat: no-repeat;
-	background-color: rgba(0,0,0,0.3);
 	}
 	</style>
 </head>
@@ -276,7 +264,6 @@
 		},
 	})
 	</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
 	
 	<div class="messages">
 		<ol>
@@ -285,7 +272,7 @@
 		</ol>
 		<form action="" method="post">
 			who:
-			<input type="text" name="xxxx">
+			<input type="text" name="name">
 			留言内容:
 			<input type="text" name="content">
 			<input type="submit" value="留言">
@@ -312,6 +299,15 @@
 		// }.call()
 	</script>
 	<script>
+		($('.messages form')).on('submit',(e)=>{
+			e.preventDefault()
+			let name = $('form input[name=name]')[0].value
+			let content = $('form input[name=content]')[0].value
+			let li = document.createElement('li')
+			li.textContent = `${name}:${content}`
+			let messagesLi =  document.querySelector('.messages ol')
+			messagesLi.appendChild(li)
+		})
 	/*loading animation*/	
 		window.setTimeout(
 			function(){
