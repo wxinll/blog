@@ -21,6 +21,12 @@ p,dl,dd,h1,h2,h3{
   clear: both;
 }
 /*0000000000000000*/
+.icon {
+	width: 1em; height: 1em;
+	vertical-align: -0.15em;
+	fill: currentColor;
+	overflow: hidden;
+}
 .site-welcome{
 	display: none;
 }
@@ -291,6 +297,7 @@ section.proSkill.offSet .progressBar .progress{
 }
 /*section.showreel*/
 section.showreel{
+	position: relative;
 	max-width: 940px;
 	margin: 0 auto;
 	text-align: center;
@@ -301,6 +308,14 @@ section.showreel h2{
 	margin-top: 50px;
 	margin-bottom: 30px;
 	font-size: 34px;
+}
+section.showreel .swiper-button-prev,.swiper-button-next{
+	top:57%;
+	background-color: rgba(255,255,255);
+	width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    outline: none;
 }
 section.showreel nav{
 	display: inline-block;
@@ -367,5 +382,12 @@ section.showreel .content .rightDown{
 	max-width: 940px;
 	margin: 0 auto;
 	text-align: center;	
+	margin-top: 50px;
 	margin-bottom: 300px;
+}
+
+.swiper-container {
+	width: 645px;
+	height: 430px;
+	z-index: 0;
 }

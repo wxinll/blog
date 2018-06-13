@@ -2,30 +2,17 @@
 <html>
 <head>
 	<title>CV</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
 	<link rel="stylesheet" type="text/css" href="a.css">
 	<link rel="stylesheet" type="text/css" href="loading.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
-	<style type="text/css">
-	    .icon {
-	       width: 1em; height: 1em;
-	       vertical-align: -0.15em;
-	       fill: currentColor;
-	       overflow: hidden;
-	    }
-	</style>
 	<script src="https://at.alicdn.com/t/font_656581_5l0ivnt4ow3o9a4i.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
-	<!-- <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.7.2/dist/av-min.js"></script> -->
+	<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.7.2/dist/av-min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
-	<style>
-	.swiper-container {
-		width: 800px;
-		height: 533px;
-		z-index: 0;
-	}
-	</style>
+
+	
 </head>
 <body>
 <!-- 	<div id="site-welcome" class="site-welcome-active">	
@@ -194,13 +181,9 @@
 		    </div>
 		    <!-- If we need pagination -->
 		    <div class="swiper-pagination"></div>
-
-		    <!-- If we need navigation buttons -->
-		    <div class="swiper-button-prev"></div>
-		    <div class="swiper-button-next"></div>
-
-		    <!-- If we need scrollbar -->
 		</div>		
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
 <!-- 		<script type="text/javascript">
 			function probarStatus1(){
 				progress.className = "progressState1";
@@ -241,29 +224,7 @@
 		</div> -->
 		
 	</section>
-	<script>
-	var mySwiper = new Swiper ('.swiper-container', {
-		// Optional parameters
-		direction: 'horizontal',
-		loop: true,
 
-		// If we need pagination
-		pagination: {
-		el: '.swiper-pagination',
-		},
-
-		// Navigation arrows
-		navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev',
-		},
-
-		// And if we need scrollbar
-		scrollbar: {
-		el: '.swiper-scrollbar',
-		},
-	})
-	</script>
 	
 	<div class="messages">
 		<ol>
@@ -280,25 +241,29 @@
 	</div>
 	<script>
 		var submit = $('.messages form ')
-		// !function(){
-		// 	var APP_ID = 'nJ7Ea2zgvj46P3EjtjG20OPN-gzGzoHsz';
-		// 	var APP_KEY = 'qCXyKxIOHvOypK9SszyQKE9s';
-		// 	AV.init({
-		// 		appId: APP_ID,
-		// 		appKey: APP_KEY
-		// 	});
-
-		// 	var TestObject = AV.Object.extend('messages');
-		// 	var testObject = new TestObject();
-		// 	testObject.save({
-		// 		words: 'Hello World!',
-		// 		tag: 'xxxxxx'
-		// 	}).then(function() {
-		// 	})
-
-		// }.call()
 	</script>
+	<script src="./swiper-init.js"></script>
+	<script src="./topNavAutoHighLight.js"></script>
+	<script src="./jumpAnimation.js"></script>
+	<script src="nav-liActive.js"></script>
 	<script>
+		var objects = []
+		var APP_ID = 'nJ7Ea2zgvj46P3EjtjG20OPN-gzGzoHsz';
+		var APP_KEY = 'qCXyKxIOHvOypK9SszyQKE9s';
+		AV.init({
+			appId: APP_ID,
+			appKey: APP_KEY
+		});
+
+		var TestObject = AV.Object.extend('messages');
+		var testObject = new TestObject();
+
+		AV.Object.fetchAll(objects).then(function(objects) {
+			console.log(objects)
+		}, function(error) {
+			// 异常处理
+		});
+
 		($('.messages form')).on('submit',(e)=>{
 			e.preventDefault()
 			let name = $('form input[name=name]')[0].value
@@ -307,124 +272,35 @@
 			li.textContent = `${name}:${content}`
 			let messagesLi =  document.querySelector('.messages ol')
 			messagesLi.appendChild(li)
-		})
-	/*loading animation*/	
-		window.setTimeout(
-			function(){
-				var loading = document.getElementById('site-welcome')
-				loading.className = 'site-welcome'
-			},1000
-		)
+			$('form input[name=name]')[0].value=''
+			$('form input[name=content]')[0].value=''
 
-		var secTags = document.querySelectorAll('[sec-tag]')
-		for (var i = 0; i < secTags.length; i++) {
-			secTags[i].classList.add('offSet')
-		}
+			
+			testObject.save({
+				name: name,
+				content: content
+			}).then(function(e) {
+				console.log(e)
+			})
+		})
+
+
+
+
+
+
+	/*loading animation*/	
+		// window.setTimeout(
+		// 	function(){
+		// 		var loading = document.getElementById('site-welcome')
+		// 		loading.className = 'site-welcome'
+		// 	},1000
+		// )
 
 		setTimeout(function(){
 			introCard.classList.remove('offSet')
 		},500)
 
-
-		window.onscroll = function() {
-
-			topNavActive()
-
-			topNavHighLight()
-		}
-
-		jumpAnimation()
-
-		liActive()
-
-
-	/*iTags add active*/
-		function liActive() {
-			var liTags = document.querySelectorAll('.topNavBar nav>ul>li')
-			for (var i = 0; i < liTags.length; i++) {
-				liTags[i].onmouseenter = function(x) {
-					x.currentTarget.classList.add('active')
-				}
-			}
-			for (var i = 0; i < liTags.length; i++) {
-				liTags[i].onmouseleave = function(x) {
-					x.currentTarget.classList.remove('active')
-				}
-			}
-		}
-
-
-	/*jump animation*/
-		function jumpAnimation() {
-			var aTags = document.querySelectorAll('.topNavBar nav li > a')
-			for (var i = 0; i < aTags.length; i++) {
-				aTags[i].onclick = function(x) {
-					x.preventDefault()
-					a = x.currentTarget
-					var href = a.getAttribute('href')
-					var element = document.querySelector(href)
-					var top = element.offsetTop
-					
-					var xCorrect = topNavBarInner.offsetHeight + 10
-					var originY = window.scrollY
-					var finalY = top - xCorrect
-
-					// scroll with tweeen
-					function animate(time) {
-						requestAnimationFrame(animate);
-						TWEEN.update(time);
-					}
-					requestAnimationFrame(animate);
-
-					var coords = {
-						y: originY
-					};
-					var tween = new TWEEN.Tween(coords)
-						.to({
-							y: finalY
-						}, 800)
-						.easing(TWEEN.Easing.Quadratic.InOut)
-						.onUpdate(function() {
-							window.scrollTo(0, coords.y)
-						})
-						.start();
-				}
-			}
-		}
-
-		function topNavActive() {
-			if (window.scrollY > 0) {
-				topNavBarInner.classList.add('active')
-			} else {
-				topNavBarInner.classList.remove('active')
-			}
-		}
-
-		function topNavHighLight(){
-			var secTags = document.querySelectorAll('[sec-tag]')
-			var minIndex = 0
-			var dx = []
-			for (var i = 0; i < secTags.length; i++) {
-				dx[i] = Math.abs(secTags[i].offsetTop - window.scrollY)
-				if (dx[i] < dx[minIndex]) {
-					minIndex = i
-				}
-			}
-
-
-			secTags[minIndex].classList.remove('offSet')
-
-			var id = secTags[minIndex].id
-			var mark = 'a[href="#' + id +'"]'
-			var aTag = document.querySelector(mark)
-
-			var liTags = document.querySelectorAll('.topNavBar nav>ul>li')
-			for (var i = 0; i < liTags.length; i++) {	
-				liTags[i].classList.remove('highLight')
-			}
-
-			aTag.parentNode.classList.add('highLight')			
-		}
 	</script>
 </body>
 </html>
