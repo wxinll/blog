@@ -362,3 +362,10 @@ section.showreel .content .rightDown{
 [sec-tag]{
 	transition: all 0.5s;
 }
+
+.messages{
+	max-width: 940px;
+	margin: 0 auto;
+	text-align: center;	
+	margin-bottom: 300px;
+}
