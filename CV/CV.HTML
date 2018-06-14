@@ -258,9 +258,18 @@
 		var TestObject = AV.Object.extend('messages');
 		var testObject = new TestObject();
 
-		AV.Object.fetchAll(objects).then(function(objects) {
-			console.log(objects)
-		}, function(error) {
+		var query = new AV.Query('messages');
+		query.find().then(function(objects) {
+					objects.forEach(function(value) {
+						let name = value.attributes.name
+						let content = value.attributes.content
+
+						let li = document.createElement('li')
+						li.textContent = `${name}:${content}`
+						let messagesLi = document.querySelector('.messages ol')
+						messagesLi.appendChild(li)
+					})
+				}, function(error) {
 			// 异常处理
 		});
 

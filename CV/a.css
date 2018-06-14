@@ -385,7 +385,18 @@ section.showreel .content .rightDown{
 	margin-top: 50px;
 	margin-bottom: 300px;
 }
-
+.messages ol{
+	max-width: 700px;
+	margin: 0 auto;
+	border-top: 1px solid rgba(0,0,0,0.1);
+}
+.messages li{
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+	padding: 6px;
+}
+.messages form{
+	margin-top: 20px;
+}
 .swiper-container {
 	width: 645px;
 	height: 430px;
