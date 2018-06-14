@@ -231,7 +231,7 @@
 			<li>aaaaaaa</li>
 			<li>bbbbbbbbbb</li>
 		</ol>
-		<form action="" method="post">
+		<form method="post">
 			who:
 			<input type="text" name="name">
 			留言内容:
@@ -239,65 +239,14 @@
 			<input type="submit" value="留言">
 		</form>
 	</div>
-	<script>
-		var submit = $('.messages form ')
-	</script>
+
 	<script src="./swiper-init.js"></script>
 	<script src="./topNavAutoHighLight.js"></script>
 	<script src="./jumpAnimation.js"></script>
 	<script src="nav-liActive.js"></script>
+	<script src="messages.js"></script>
+
 	<script>
-		var objects = []
-		var APP_ID = 'nJ7Ea2zgvj46P3EjtjG20OPN-gzGzoHsz';
-		var APP_KEY = 'qCXyKxIOHvOypK9SszyQKE9s';
-		AV.init({
-			appId: APP_ID,
-			appKey: APP_KEY
-		});
-
-		var TestObject = AV.Object.extend('messages');
-		var testObject = new TestObject();
-
-		var query = new AV.Query('messages');
-		query.find().then(function(objects) {
-					objects.forEach(function(value) {
-						let name = value.attributes.name
-						let content = value.attributes.content
-
-						let li = document.createElement('li')
-						li.textContent = `${name}:${content}`
-						let messagesLi = document.querySelector('.messages ol')
-						messagesLi.appendChild(li)
-					})
-				}, function(error) {
-			// 异常处理
-		});
-
-		($('.messages form')).on('submit',(e)=>{
-			e.preventDefault()
-			let name = $('form input[name=name]')[0].value
-			let content = $('form input[name=content]')[0].value
-			let li = document.createElement('li')
-			li.textContent = `${name}:${content}`
-			let messagesLi =  document.querySelector('.messages ol')
-			messagesLi.appendChild(li)
-			$('form input[name=name]')[0].value=''
-			$('form input[name=content]')[0].value=''
-
-			
-			testObject.save({
-				name: name,
-				content: content
-			}).then(function(e) {
-				console.log(e)
-			})
-		})
-
-
-
-
-
-
 	/*loading animation*/	
 		// window.setTimeout(
 		// 	function(){
@@ -311,5 +260,6 @@
 		},500)
 
 	</script>
+
 </body>
 </html>
