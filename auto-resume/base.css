@@ -21,3 +21,8 @@ p,dl,dd,h1,h2,h3,pre{
   clear: both;
 }
 /*0000000000000000*/
+.token.property,.token.selector,.token.punctuation{
+  color: black;
+}
+/*代码框写的差不多了
+开始添加简历吧*/
