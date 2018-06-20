@@ -33,6 +33,16 @@ html{
 .token.punctuation{
   color: #999;
 }
+/*加个3D效果*/
+html{
+	perspective: 1000px;
+}
+.notepad{
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform: rotateY(10deg) translateZ(-100px);
+}
 
 /*代码框写的差不多了，为添加简历做准备吧*/
 #paper{
@@ -48,29 +58,57 @@ html{
 /*开始在右边写简历了*/
 `
 var content1 =`# 简历
-# 姓名 
-	XXX
-# 职位
-	前端工程师
-# 技能
-	熟悉JavaScript、CSS
-# 联系方式
-	邮箱： xxxxx@live.cn
-	phone: 18633333333
+## 姓名 
+
+XXX
+
+## 职位
+
+前端工程师
+
+## 技能
+
+- 熟悉JavaScript
+- HTML
+- CSS
+
+## 联系方式
+
+- 邮箱： xxxxx@live.cn
+- phone: 18633333333
 aaaa`
 var code2 = `
-/*调整一下简历的样式
-*/
+/*调整一下简历的样式*/
 .resume{
 	margin: 1em;
 	padding: 10px;
-	line-height: 1.5em;
+}
+.resume pre{
+	line-height: 1.5em;	
 }`
+var code3 = `
+/*用mark.js把简历内容转换为HTML*/
+`
+var code4 = `
+/*给HTML添加点样式*/
+.mdHtml{
+	line-height: 2.5rem;
+}
+.mdHtml h1{
+	text-align: center;
+}
+`
 
 var style = document.getElementsByTagName('style')[0]
 writeCode('',code1,()=>{
 	writeInPaper('',content1,()=>{
-		writeCode(code1,code2)
+		writeCode(code1,code2,()=>{
+			writeCode(code1+code2,code3,()=>{
+				replacePreWithHtml(()=>{
+					writeCode(code1+code2+code3,code4)
+				})
+			})
+		})
 	})
 })
 
@@ -96,12 +134,22 @@ function writeCode(pre,now,callback) {
 function writeInPaper(pre,now,callback) {
 	var n = 0
 	var content = pre + now
+	var domPaper = document.querySelector('#paper pre')
 	var id = setInterval(() => {
 		n += 1
-		paper.innerHTML = content.slice(0, n)
+		domPaper.innerHTML = content.slice(0, n)
 		if (n > content.length) {
 			clearInterval(id)
 			callback.call()
 		}
 	}, 10)
+}
+
+function replacePreWithHtml(callback) {
+	var div = document.createElement('div')
+	div.className = 'mdHtml'
+	div.innerHTML = marked(content1)
+	var pre = document.querySelector('#paper pre')
+	pre.replaceWith(div)
+	callback.call()
 }
