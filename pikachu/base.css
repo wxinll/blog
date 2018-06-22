@@ -1,0 +1,21 @@
+.code-wrapper{
+	position: relative;
+	overflow: auto;
+	height: 50vh;
+}
+*{
+	transition: all 1s;
+}
+.speedControl{
+	position: fixed;
+	z-index: 1;
+	right: 100px;
+	top: 50px;
+}
+.speedControl button{
+	width: 80px;
+	height: 40px;
+}
+.speedControl .active{
+	color: red;
+}
