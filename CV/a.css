@@ -70,6 +70,7 @@ p,dl,dd,h1,h2,h3{
 }
 .topNavBar nav{
 	float: right;
+	padding-right: 5rem;
 }
 .topNavBar nav>ul{
 	list-style: none;
