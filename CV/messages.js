@@ -22,7 +22,19 @@
 		},
 	}
 
-	var view = document.querySelector('.messages')
+	var view = {
+		el: '.messages',
+		init(){
+			this.$el = document.querySelector('.messages')
+		},
+		render(data){
+			let {name,content} = data
+			let li = document.createElement('li')
+			li.textContent = `${name}:${content}`
+			let ol = this.$el.querySelector('.messages ol')
+			ol.appendChild(li)
+		}
+	}
 
 	var controller = {
 		model: null,
@@ -37,34 +49,34 @@
 
 		loadMessage: function() {
 			this.model.fetch().then(function(objects) {
-				objects.forEach(function(value) {
-					let name = value.attributes.name
-					let content = value.attributes.content
-					let li = document.createElement('li')
-					li.textContent = `${name}:${content}`
-					let messagesLi = document.querySelector('.messages ol')
-					messagesLi.appendChild(li)
+				objects.forEach( (value) =>{
+					let data = value.attributes
+					this.view.render(data)
 				})
-			}, function(error) {
-				// 异常处理
-			}) 
+			}.bind(model), function(error) {
+				console.log(error)
+			})
 		},
 		saveMessage: function() {
 			let name = this.view.querySelector('input[name=name]').value
 			let content = this.view.querySelector('input[name=content]').value
+			let data = {
+				name,
+				content
+			}
 			this.model.save(name, content).then( (objects)=> {
-				let li = document.createElement('li')
-				li.textContent = `${name}:${content}`
-				let messagesLi = this.view.querySelector('ol')
-				messagesLi.appendChild(li)
+				this.view.render(data)
 			})
+		},
+		clearMessage(){
+			this.view.querySelector('input[name=name]').value = ''
+			this.view.querySelector('input[name=content]').value = ''
 		},
 		bindEvents: function() {
 			($('.messages form')).on('submit', (e) => {
 				e.preventDefault()
 				this.saveMessage()
-				this.view.querySelector('input[name=name]').value = ''
-				this.view.querySelector('input[name=content]').value = ''
+				this.clearMessage()
 			})
 		}
 	}
