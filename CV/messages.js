@@ -42,18 +42,19 @@
 		init:function(model,view){
 			this.view = view
 			this.model = model
+			this.view.init()
 			this.model.init()
 			this.loadMessage()
 			this.bindEvents()
 		},
 
 		loadMessage: function() {
-			this.model.fetch().then(function(objects) {
+			this.model.fetch().then((objects)=> {
 				objects.forEach( (value) =>{
 					let data = value.attributes
 					this.view.render(data)
 				})
-			}.bind(model), function(error) {
+			}, function(error) {
 				console.log(error)
 			})
 		},
