@@ -253,6 +253,40 @@ main .selfIntro{
 	font-size: 1.2em;
 	line-height: 2;
 }
+/*section.proj*/
+section.proj{
+	position: relative;
+	max-width: 940px;
+	margin: 0 auto;
+	text-align: center;
+}
+section.proj h2{
+	text-align: center;
+	color: #3D4451;	
+	margin-top: 50px;
+	margin-bottom: 30px;
+	font-size: 34px;
+}
+section.proj .container{
+	display: flex;
+	flex-direction: column;
+}
+section.proj .container>li{
+	display: flex;
+	position: relative;
+	justify-content: center;
+	height: 400px;
+	margin-bottom: 40px;
+	padding-top: 40px;
+}
+section.proj .title{
+	color: #3D4451;
+	position: absolute;
+	top: 0px;
+}
+section.proj ul>li img{
+	height: 100%;
+}
 /*section-proSkill*/
 section.proSkill{
 	max-width: 940px;
@@ -384,7 +418,7 @@ section.showreel .content .rightDown{
 	margin: 0 auto;
 	text-align: center;	
 	margin-top: 50px;
-	margin-bottom: 300px;
+	margin-bottom: 150px;
 }
 .messages h2{
 	color: #3D4451;

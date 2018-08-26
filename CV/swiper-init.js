@@ -19,5 +19,9 @@
 		scrollbar: {
 			el: '.swiper-scrollbar',
 		},
+
+		autoplay: {
+			delay: 2000,
+		},
 	})
 }.call()

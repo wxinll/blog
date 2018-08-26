@@ -31,15 +31,19 @@
 						<a href="#introCard">关于</a>
 					</li>
 					<li>
+						<a href="#project">项目</a>
+						<ul class="submenu">
+							<li>Vue简历编辑器</li>
+							<li>Vue移动端商城</li>
+							<li>Vue重构论坛</li>
+							<li>云音乐</li>
+						</ul>
+					</li>
+					<li>
 						<a href="#proSkill">技能</a>
 					</li>
 					<li class="menuTrigger">
-						<a href="#showreel">作品</a>
-						<ul class="submenu">
-							<li>作品1</li>
-							<li>作品2</li>
-							<li>作品3</li>
-						</ul>
+						<a href="#showreel">有趣的</a>
 					</li>
 					<li>
 						<a href="#comment">留言</a>
@@ -61,19 +65,19 @@
 		<div sec-tag id="introCard" class="card">
 			<div class="picAndIntro clearfix">
 				<div class="picture">
-					<img src="./images/myphoto.jpg" alt="selfPhoto">
+					<img src="./images/pidan.png" alt="selfPhoto" height="350">
 				</div>
 				<div class="intro">
 					<span class="hello">Hello<span class="triangle"></span></span>
-					<h1>wx</h1>
+					<h1>wxin</h1>
 					<p>前端之路</p>
 					<dl class="clearfix">
 						<dt>年龄</dt>
-						<dd>20</dd>
+						<dd>22</dd>
 						<dt>城市</dt>
-						<dd>北京</dd>
+						<dd>武汉</dd>
 						<dt>邮箱</dt>
-						<dd>18612345678@live.cn</dd>
+						<dd>wxxsong@gmail.com</dd>
 						<dt>手机</dt>
 						<dd>18612345678</dd>
 					</dl>
@@ -91,7 +95,7 @@
 						<use xlink:href="#icon-twitter"></use>
 					</svg>
 				</a>
-				<a href="#">
+				<a href="https://github.com/wxinll" target="_blank">
 					<svg class="icon" aria-hidden="true">
 						<use xlink:href="#icon-github"></use>
 					</svg>					
@@ -104,14 +108,53 @@
 		</p>
 		<p class="selfIntro">
 			我是wx，正在学习前端<br>
-			每天学习一点点
+			每天学习一点点，希望找到更多有趣的东西
 		</p>
 	</main>
+	<section sec-tag id="project" class="proj">
+		<h2>项目</h2>
+		<ul class="container clearfix">
+			<li>
+				<h3 class="title">Vue在线简历编辑器</h3>
+				<a href="https://wxinll.github.io/vue-cli-resume/dist/" target="_blank">
+					<img src="./images/vueResume.png" alt="">
+				</a>
+			</li>
+			<li>
+				<h3 class="title">Vue移动端商城</h3>
+				<a href="http://xwin.xyz/mall/" target="_blank">
+					<img src="./images/mall1.png" alt="" >
+					<img src="./images/mall3.png" alt="" >
+				</a>
+			</li>
+			<li>
+				<h3 class="title">Vue重构论坛</h3>
+				<a href="https://wxinll.github.io/vue-forum/dist/#/" target="_blank">
+					<img src="./images/vueForum.png" alt="" >
+				</a>
+			</li>
+			<li>
+				<h3 class="title">云音乐</h3>
+				<a href="http://xwin.xyz/music/" target="_blank">
+					<img src="./images/music2.png" alt="">
+					<img src="./images/music1.png" alt="">
+				</a>
+			</li>
+		</ul>
+	</section>
 	<section sec-tag id="proSkill" class="proSkill">
 		<h2>技能</h2>
 		<ol class="clearfix">
 			<li>
-				<h3>HTML CSS</h3>
+				<h3>HTML5</h3>
+				<div class="progressBar">
+					<div class="progress">
+						
+					</div>
+				</div>
+			</li>
+			<li>
+				<h3>CSS3</h3>
 				<div class="progressBar">
 					<div class="progress">
 						
@@ -127,7 +170,7 @@
 				</div>
 			</li>
 			<li>
-				<h3>略略略</h3>
+				<h3>jQuery</h3>
 				<div class="progressBar">
 					<div class="progress">
 						
@@ -135,15 +178,7 @@
 				</div>
 			</li>
 			<li>
-				<h3>略略略</h3>
-				<div class="progressBar">
-					<div class="progress">
-						
-					</div>
-				</div>
-			</li>
-			<li>
-				<h3>略略略</h3>
+				<h3>Vue</h3>
 				<div class="progressBar">
 					<div class="progress">
 						
@@ -153,24 +188,34 @@
 		</ol>
 	</section>
 	<section sec-tag id="showreel" class="showreel">
-		<h2>作品集</h2>
+		<h2>有趣的</h2>
 		<div class="swiper-container">
 		    <!-- Additional required wrapper -->
 		    <div class="swiper-wrapper">
 		        <!-- Slides -->
 				<div class="swiper-slide">
-					<a href="https://wxinll.github.io/newLesson/myNavSite/index.html">
+					<a href="https://wxinll.github.io/newLesson/auto-resume/index.html" target="_blank">
+						<img src="./images/autoResume.png" alt="" class="swiper-slide" width="940">
+					</a>
+				</div>
+				<div class="swiper-slide">
+					<a href="https://wxinll.github.io/newLesson/myNavSite/index.html" target="_blank">
 						<img src="./images/nav.png" alt="" class="swiper-slide" width="940">
 					</a>
 				</div>
 				<div class="swiper-slide">
-					<a href="https://wxinll.github.io/newLesson/myCanvas/index.html">
+					<a href="https://wxinll.github.io/newLesson/myCanvas/index.html" target="_blank">
 						<img src="./images/canvas.jpg" alt="" class="swiper-slide" width="940">
 					</a>
 				</div>
 				<div class="swiper-slide">
-					<a href="https://wxinll.github.io/newLesson/slideShow/appleLoopSlide/index.html">
+					<a href="https://wxinll.github.io/newLesson/slideShow/appleLoopSlide/index.html" target="_blank">
 						<img src="./images/slide.png" alt="" class="swiper-slide" width="940">
+					</a>
+				</div>
+				<div class="swiper-slide">
+					<a href="https://wxinll.github.io/newLesson/pikachu/index.html" target="_blank">
+						<img src="./images/pikachu.png" alt="" class="swiper-slide" width="940">
 					</a>
 				</div>
 		    </div>
@@ -243,6 +288,7 @@
 	<script src="./jumpAnimation.js"></script>
 	<script src="nav-liActive.js"></script>
 	<script src="messages.js"></script>
+	<script src="liJump.js"></script>
 
 	<script>
 	/*loading animation*/	
