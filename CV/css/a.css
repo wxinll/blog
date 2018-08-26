@@ -142,7 +142,7 @@ p,dl,dd,h1,h2,h3{
 
 /*banner*/
 .banner{
-	background: url(./images/snow-mountain.jpg) center;
+	background: url(../images/snow-mountain.jpg) center;
 	background-size: cover;
 	height: 515px;
 }
