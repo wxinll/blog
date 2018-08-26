@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hans">
 <head>
 	<title>CV</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css">
 	<link rel="stylesheet" type="text/css" href="a.css">
 	<link rel="stylesheet" type="text/css" href="loading.css">
+	<meta charset="utf-8">
 	<script src="https://at.alicdn.com/t/font_656581_5l0ivnt4ow3o9a4i.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/16.3.5/Tween.min.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.7.2/dist/av-min.js"></script>
@@ -22,7 +23,7 @@
 	<div class="topNavBar">
 		<div id="topNavBarInner" class="topNavBarInner clearfix">
 			<a class = "logo" href="#" alt="logo">
-				<span class="rs">RS</span><span class="card">card</span>	
+				<span class="rs">X</span><span class="card">win</span>	
 			</a>
 			<nav>
 				<ul class="clearfix">
@@ -39,6 +40,9 @@
 							<li>作品2</li>
 							<li>作品3</li>
 						</ul>
+					</li>
+					<li>
+						<a href="#comment">留言</a>
 					</li>
 					<li>
 						<a href="#">其他</a>
@@ -217,10 +221,13 @@
 	</section>
 
 	
-	<div class="messages">
+	<section sec-tag class="messages" id="comment">
+		<h2>留言栏</h2>
 		<ol>
-			<li>aaaaaaa</li>
-			<li>bbbbbbbbbb</li>
+			<li>
+				<div class="name">用户名</div>
+				<div class="content">留言内容</div>
+			</li>
 		</ol>
 		<form method="post">
 			who:
@@ -229,7 +236,7 @@
 			<input type="text" name="content" autocomplete="off">
 			<input type="submit" value="留言">
 		</form>
-	</div>
+	</section>
 
 	<script src="./swiper-init.js"></script>
 	<script src="./topNavAutoHighLight.js"></script>

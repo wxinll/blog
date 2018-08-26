@@ -30,7 +30,14 @@
 		render(data){
 			let {name,content} = data
 			let li = document.createElement('li')
-			li.textContent = `${name}:${content}`
+			let divName = document.createElement('div')
+			divName.textContent = `${name}:`
+			divName.classList.add("name")
+			let divContent = document.createElement('div')
+			divContent.textContent = `${content}`
+			divContent.classList.add("content")
+			li.appendChild(divName)
+			li.appendChild(divContent)
 			let ol = this.$el.querySelector('.messages ol')
 			ol.appendChild(li)
 		}

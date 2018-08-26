@@ -124,7 +124,7 @@ p,dl,dd,h1,h2,h3{
     right: 0;
 	padding: 6px 10px;
 	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
-	animation: submenuSlide 0.5s infinite;
+	animation: submenuSlide 0.5s;
 	line-height: 28px;
 	cursor: pointer;
 }
@@ -386,14 +386,34 @@ section.showreel .content .rightDown{
 	margin-top: 50px;
 	margin-bottom: 300px;
 }
+.messages h2{
+	color: #3D4451;
+	margin-top: 50px;
+	margin-bottom: 30px;
+	text-align: center;
+	font-size: 34px;
+}
 .messages ol{
 	max-width: 700px;
 	margin: 0 auto;
-	border-top: 1px solid rgba(0,0,0,0.1);
+	padding: 0 15%;
 }
 .messages li{
 	border-bottom: 1px solid rgba(0,0,0,0.1);
-	padding: 6px;
+	padding: 6px 12px;
+	overflow: hidden;
+	text-align: left;
+}
+.messages li:nth-child(1){
+	border-top: 1px solid rgba(0,0,0,0.1);
+}
+.messages li .name{
+	font-size: 13px;
+	margin-bottom: 5px;
+}
+.messages li .content{
+	font-size: 16px;
+	padding-left: 15px;
 }
 .messages form{
 	margin-top: 20px;
