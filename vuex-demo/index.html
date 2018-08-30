@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Vuex Demo</title>
+	<style type="text/css">
+		body{
+			background-color: #eee;
+		}
+		.topBar{
+			height: 50px;
+			border: 1px solid black;
+		}
+		.topBar>div{
+			text-align: center;
+		}
+		#child-one{
+			background-color: #f8f8f8;
+			padding: 20px 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<header class="topBar">
+			<div>
+				Vuex组件通信
+			</div>
+			<div>
+				本组件额度：{{total}}
+				共享额度： {{count}}
+			</div>
+		</header>
+		<child-one></child-one>
+	</div>
+	<script src="https://cdn.bootcss.com/vue/2.5.16/vue.js"></script>
+	<script src="https://cdn.bootcss.com/vuex/3.0.1/vuex.js"></script>
+	<script src="./main.js"></script>
+</body>
+</html>
