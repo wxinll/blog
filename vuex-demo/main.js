@@ -5,7 +5,12 @@ const store = new Vuex.Store({
 	mutations: {
 		addCount(state,n){
 			state.count += parseInt(n)
-		}
+		},
+		// addCount(state,n){
+		// 	setTimeout(()=> {
+		// 		state.count += parseInt(n)
+		// 	},1500)
+		// },
 	},
 	actions: {
 		addAction({commit},data){
@@ -30,6 +35,7 @@ Vue.component('child-one',{
 	methods: {
 		add(){
 			this.$store.dispatch('addAction',this.value)
+			// this.$store.commit('addCount',this.value)
 		},
 	},
 	template: `
